@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS mock_responses (
+    id SERIAL PRIMARY KEY,
+    endpoint VARCHAR(255) UNIQUE NOT NULL,
+    payload TEXT NOT NULL
+);
