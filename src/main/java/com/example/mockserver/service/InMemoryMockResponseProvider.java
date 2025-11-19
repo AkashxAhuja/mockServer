@@ -24,7 +24,7 @@ public class InMemoryMockResponseProvider implements MockResponseProvider {
     @PostConstruct
     void loadDefaults() {
         responses.put("/api/v1/inq_handshake", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("Handshake completed", "انتهى المصافحة"),
                 objectMapper.createObjectNode()
@@ -33,7 +33,7 @@ public class InMemoryMockResponseProvider implements MockResponseProvider {
         )));
 
         responses.put("/api/v1/sub_verify_otp", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("OTP verified", "تم التحقق من كلمة المرور لمرة واحدة"),
                 objectMapper.createObjectNode()
@@ -43,14 +43,14 @@ public class InMemoryMockResponseProvider implements MockResponseProvider {
         )));
 
         responses.put("/api/v1/sub_salary_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 null,
                 null
         )));
 
         responses.put("/api/v1/sub_eida_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "EIDA000",
                 new MessageContent("EIDA validated", "تم التحقق من الهوية"),
                 objectMapper.createObjectNode()
@@ -59,7 +59,7 @@ public class InMemoryMockResponseProvider implements MockResponseProvider {
         )));
 
         responses.put("/api/v1/sub_passport_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "PASS000",
                 new MessageContent("Passport validated", "تم التحقق من جواز السفر"),
                 objectMapper.createObjectNode()
@@ -68,35 +68,35 @@ public class InMemoryMockResponseProvider implements MockResponseProvider {
         )));
 
         responses.put("/api/v1/sub_address_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("Address captured", "تم التقاط العنوان"),
                 null
         )));
 
         responses.put("/api/v1/sub_employment_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("Employment captured", "تم التقاط بيانات التوظيف"),
                 null
         )));
 
         responses.put("/api/v1/sub_fatca_crs_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("FATCA/CRS captured", "تم التقاط FATCA/CRS"),
                 null
         )));
 
         responses.put("/api/v1/sub_delivery_pref", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("Delivery preference set", "تم تعيين تفضيل التسليم"),
                 null
         )));
 
         responses.put("/api/v1/sub_product_details", toJson(new MockResponsePayload(
-                "0",
+                "00",
                 "",
                 new MessageContent("Product created", "تم إنشاء المنتج"),
                 objectMapper.createObjectNode()

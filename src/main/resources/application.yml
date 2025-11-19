@@ -18,7 +18,7 @@ spring:
       mode: never
 
 mockserver:
-  source: IN_MEMORY
+  source: DATABASE
 
 logging:
   level:

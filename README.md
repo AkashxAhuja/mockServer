@@ -21,8 +21,8 @@ gradle wrapper --gradle-version 8.5
 1. Set environment variables for your database (only required when `mockserver.source=DATABASE`):
    - `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`
 2. Choose the response source:
-   - In-memory (default): `mockserver.source=IN_MEMORY`
-   - Database: `mockserver.source=DATABASE`
+   - In-memory: `mockserver.source=IN_MEMORY`
+   - Database (default): `mockserver.source=DATABASE`
 3. Start the application:
    ```bash
    ./gradlew bootRun
@@ -35,17 +35,13 @@ spring.sql.init.mode=always
 ```
 The included `schema.sql` and `data.sql` create and populate the `mock_responses` table.
 
-## Endpoints
-- `GET /api/v1/inq_handshake`
-- `GET /api/v1/sub_verify_otp`
-- `GET /api/v1/sub_salary_details`
-- `GET /api/v1/sub_eida_details`
-- `GET /api/v1/sub_passport_details`
-- `GET /api/v1/sub_address_details`
-- `GET /api/v1/sub_employment_details`
-- `GET /api/v1/sub_fatca_crs_details`
-- `GET /api/v1/sub_delivery_pref`
-- `GET /api/v1/sub_product_details`
+## Endpoint usage
+
+All mock traffic now goes through a single controller endpoint:
+
+- `GET /mock?service=/api/v1/inq_handshake`
+
+Provide the original service path (for example `/api/v1/sub_verify_otp`) as the `service` query parameter to retrieve its payload. When `mockserver.source=DATABASE`, the controller reads the payload from the `mock_responses` table; when `mockserver.source=IN_MEMORY`, it falls back to the defaults defined in code.
 
 ## Configuration notes
 - When `mockserver.source=IN_MEMORY`, payloads are defined in `InMemoryMockResponseProvider`.

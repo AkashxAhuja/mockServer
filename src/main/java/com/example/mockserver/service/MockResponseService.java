@@ -25,7 +25,16 @@ public class MockResponseService {
         if (provider == null) {
             throw new IllegalStateException("No provider configured for source " + properties.getSource());
         }
-        return provider.getResponse(endpoint)
-                .orElseThrow(() -> new IllegalArgumentException("No response configured for endpoint " + endpoint));
+        String normalizedEndpoint = normalizeEndpoint(endpoint);
+        return provider.getResponse(normalizedEndpoint)
+                .orElseThrow(() -> new IllegalArgumentException("No response configured for endpoint " + normalizedEndpoint));
+    }
+
+    private String normalizeEndpoint(String endpoint) {
+        String trimmed = endpoint == null ? "" : endpoint.trim();
+        if (trimmed.isEmpty()) {
+            return trimmed;
+        }
+        return trimmed.startsWith("/") ? trimmed : "/" + trimmed;
     }
 }
